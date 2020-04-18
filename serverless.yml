@@ -2,6 +2,10 @@ org: ranjanjyotidas
 app: my-first-app
 service: aws-python-simple-http-endpoint
 
+package:
+        exclude:
+                -Jenkinsfile
+
 frameworkVersion: ">=1.2.0 <2.0.0"
 
 provider:
