@@ -1,6 +1,5 @@
 import json
 import datetime
-import os
 
 
 def endpoint(event, context):
