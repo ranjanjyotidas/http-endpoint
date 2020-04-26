@@ -9,11 +9,13 @@ pipeline{
         }
         stage('Build'){
             steps{
-                echo 'pulling...' + env.BRANCH_NAME
-                if( env.BRANCH_NAME == 'master') {
-                    serverless deploy --stage prod --aws-profile prod_profile
-                } else {
-                    serverless deploy --stage dev --aws-profile dev_profile
+                script {
+                    echo 'pulling...' + env.BRANCH_NAME
+                    if( env.BRANCH_NAME == 'master') {
+                        sh 'serverless deploy --stage prod --aws-profile prod_profile'
+                    } else {
+                        sh 'serverless deploy --stage dev --aws-profile dev_profile'
+                    }
                 }
             }
         }
