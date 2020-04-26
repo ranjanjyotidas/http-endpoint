@@ -2,6 +2,12 @@ org: ranjanjyotidas
 app: my-first-app
 service: aws-python-simple-http-endpoint
 
+custom:
+        dockerArtifact:
+                path: '.'
+                dockerfile: Dockerfile
+                copy: http-endpoint
+
 package:
         exclude:
                 -Jenkinsfile
@@ -10,7 +16,7 @@ frameworkVersion: ">=1.2.0 <2.0.0"
 
 provider:
   name: aws
-  runtime: python2.7
+  runtime: go1.x
 
 functions:
   currentTime:
@@ -19,3 +25,6 @@ functions:
       - http:
           path: ping
           method: get
+
+plugins:
+        - serverless-docker-artifacts
